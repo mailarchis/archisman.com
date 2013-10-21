@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html lang="en" style="width:100%;margin:1px;">
+	<head>
+		<title>Archisman Das - Coder. Entrepreneur. Product Manager.</title>
+		<meta name="description" content="Home Page of Archisman Das. Because facebook, twitter and linkedin were not enough." />
+		<meta name="keywords" content="archisman, das, product manager, coder, entrepreneur, startup, web, mobile, trilogy, pixfirst, django, jquery, python, user experience" />
+		<!-- Import fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+		<!-- End Import fonts -->
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="../lib/css/reset.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../css/static.css" type="text/css" media="screen" />
+		<!-- End Stylesheets-->
+	</head>
+	<body>
+		<div id="id_album_container">
+		</div>
+		<!-- End Footer -->
+		<!-- Begin Javascript -->
+		<script src="../lib/js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript">
+		var __PHOTOS_PATH__ = "../img/travel/";
+		// Format - [File name, image width, image height]
+		var __PHOTOS__ = [
+							["Hamilton-Pool-Austin.jpg",604,453],
+							["Hangzhou-1.JPG",409,545],
+							["Hangzhou-2.JPG",727,545],
+							["Hangzhou-3.JPG",727,545],
+							["Hangzhou-4.JPG",727,545],
+							["Kerela-1.jpg",727,545],
+							["Khajiar-1.jpg",960,720],
+							["Kovalam-1.jpg",727,545],
+							["Kovalam-2.jpg",727,545],
+							["Kovalam-3.jpg",727,545],
+							["Kovalam-4.jpg",727,545],
+							["Mount-Bonnel-Austin.JPG",727,545],
+							["Munnar-1.jpg",727,545],
+							["Munnar-2.jpg",727,545],
+							["Munnar-3.jpg",727,545],
+							["Munnar-4.jpg",727,545],
+							["Munnar-5.jpg",727,545],
+							["Munnar-6.jpg",727,545],
+							["Oasis-Austin.JPG",817,545],
+							["Palakkad-1.jpg",727,545],
+							["Paris-1.jpg",960,720],
+							["Pondicherry-1.jpg",727,545],
+							["San-Blas-Islands-2.JPG",727,545],
+							["San-Blas-Islands.jpg",2048,1152],
+							["Shanghai-1.JPG",409,545],
+							["Shanghai-2.JPG",409,545],
+							["Shivasamudram-Falls-1-0.jpg",2048,1536],
+							["Shivasamudram-Falls-1-10.jpg",727,545],
+							["Suratkhal-Beach.JPG",3456,4608],
+							["Wagah-1.JPG",4608,3456],
+						];
+		
+		function linear_partition(photos, k)
+		{
+			// Refer - https://github.com/crispymtn/linear-partition/blob/master/linear_partition.coffee
+			var number_of_photos = photos.length;
+			if (k <= 0)
+			{
+				return [];
+			}
+			// Initialize linear_partition_table
+			var linear_partition_table = new Array(number_of_photos);
+			for (var i = 0; i<number_of_photos; i++)
+			{
+				linear_partition_table[i] = new Array(k);
+				for (var j = 0; j<k; j++)
+				{
+					linear_partition_table[i][j] = 0;
+				}
+			}
+			// Initialize linear_parition_solution
+			var linear_partition_solution = new Array(number_of_photos-1);
+			for (var i = 0; i<number_of_photos-1; i++)
+			{
+				linear_partition_solution[i] = new Array(k-1);
+				for (var j = 0; j<k-1; j++)
+				{
+					linear_partition_solution[i][j] = 0;
+				}
+			}
+			for (var i = 0; i<number_of_photos; i++)
+			{
+				if (i == 0)
+				{
+					var temp = 0;
+				}
+				else
+				{
+					var temp =  linear_partition_table[i-1][0];
+				}
+				linear_partition_table[i][0] = parseFloat(photos[i][1]/photos[i][2]) + temp;
+			}
+			for (var j = 0; j<k; j++)
+			{
+				linear_partition_table[0][j] = parseFloat(photos[0][1]/photos[0][2]);				
+				
+			}
+			for (var i = 1; i<number_of_photos; i++)
+			{
+				for (var j = 1; j<k; j++)
+				{
+					var temp_array = new Array(i);
+					for (var x = 0; x<i; x++)
+					{
+						
+						temp_array[x] = Math.max(linear_partition_table[x][j-1], linear_partition_table[i][0]-linear_partition_table[x][0]);
+					}
+					linear_partition_table[i][j] = Math.min.apply(Math, temp_array);
+					linear_partition_solution[i-1][j-1] = temp_array.indexOf(linear_partition_table[i][j]);
+				}
+			}
+			n = number_of_photos - 1;
+			k = k - 2;
+			ans = new Array();
+			while (k >= 0)
+			{
+				var temp_array = [];
+				for ( var j =  linear_partition_solution[n-1][k]+1; j<n+1; j++)
+				{
+					temp_array.push(photos[j]);
+				}
+				ans.push(temp_array);
+				n = linear_partition_solution[n-1][k];
+				k = k - 1;
+			}
+			var temp_array = [];
+			for (var j = 0; j<n+1; j++)
+			{
+				temp_array[j] = photos[j];
+			}
+			ans.push(temp_array);			
+			return ans;
+		}
+
+		function render_album()
+		{
+			var album_width = $("#id_album_container").width();
+			var ideal_height = $(window).height()/2;
+			var sum_photos_width = 0.00;
+			$(__PHOTOS__).each( function() {
+				sum_photos_width = sum_photos_width + (($(this)[1]/$(this)[2])*ideal_height);
+			});
+			var number_of_rows = Math.round(sum_photos_width/album_width);
+			var partition = linear_partition(__PHOTOS__, number_of_rows);
+			var tmpl = '<div class="photo" style="width: #0#; height: #1#; background-image: url(#2#);"></div>';
+			$(partition).each( function() {
+				$(this).each( function() {
+					var height = ideal_height;
+					var width = ($(this)[1]/$(this)[2])*ideal_height;
+					var img_url = __PHOTOS_PATH__ + $(this)[0];
+					var html = tmpl.replace("#0#", width + "px");
+					html = html.replace("#1#", height + "px");
+					html = html.replace("#2#", img_url);
+					$("#id_album_container").append(html);
+				});
+			});
+			
+		}
+		$( function() {
+			render_album();
+		});
+		</script>
+		<!-- End Javascript -->
+	</body>	
+</html>

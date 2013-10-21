@@ -1,0 +1,277 @@
+/* 
+	Stylesheet for http://static.archisman.com 
+	References:
+		1. http://www.shayhowe.com/wp-content/themes/letscounthedays/css/shay.css
+*/
+
+/* General Styles */
+
+body { 
+	font: 14px/20px 'Architects Daughter', Arial, Helvetica, sans-serif; 
+}
+html { margin: 0 auto;width: 950px; }
+.clear { clear: both; }
+.none { display: none; }
+.bold { 
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+
+hr {
+	color: #C2C2C2;
+}
+
+h1 {
+	font-size: 32px;
+	line-height: 27px;
+	margin: 5px 0;
+}
+h2 {
+	font-size: 24px;
+	line-height: 18px;
+	margin: 5px 0;
+}
+h3 {
+	font-size: 16px;
+	line-height: 9px;
+	margin: 5px 0;
+}
+p {
+	font-size: 18px;
+	line-height: 27px;
+	display: block;
+	padding: 0 0 10px 0;
+}
+strong, .strong {
+	font-weight: bold;
+	color: #c21313;
+}
+
+span.italic {
+	font-style: italic;
+}
+
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+
+/* Reference - http://cssgradientbutton.com/ */ 
+.btn-amazon {
+	width: 115px;
+	height: 24px;
+	font-size: 14px;
+	font-family: arial, helvetica, sans-serif; 
+	font-weight: bold;
+	padding: 10px 10px 10px 48px; 
+	text-decoration:none; 
+	display:inline-block;
+	color: #000000;
+	border:1px solid #8f0e0e; 
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border:1px solid #650a0a;
+	background: url('../lib/img/glyphicons_free/glyphicons_social/png/glyphicons_social_07_amazon.png') 12px 50% no-repeat;
+
+}
+
+.btn-amazon:hover {
+	color: #C21313;
+	cursor: pointer;
+}
+
+.link-expand {
+	width: 115px;
+	height: 24px;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px 10px 10px 48px; 
+	text-decoration:underline; 
+	vertical-align:center;
+	display:inline-block;
+	background: url('../lib/img/glyphicons_free/glyphicons/png/glyphicons_367_expand.png') 12px 50% no-repeat;
+
+}
+
+.link-expand:hover {
+	color: #C21313;
+	cursor: pointer;
+}
+
+/* End General Styles */
+
+/* Header Styles */
+
+#id_header_wrapper {
+	height: 56px;
+	border-bottom: 2px solid #000000;
+}
+
+header {
+	margin: 10px 0;
+}
+
+header h1 {	
+	font-size: 32px;
+	font-weight: bold;
+	line-height: 27px;
+}
+
+header h3 {
+	font-size: 18px;
+	font-style: italic;
+	color: #C2C2C2;
+}
+
+header span {
+	font-weight: bold;
+}
+
+/* End Header Styles */
+
+#id_content_wrapper {
+	margin: 10px 0;
+	padding: 10px 0;
+	min-height: 540px;
+	border-bottom: 2px solid #000000;
+}
+
+#id_nav_tab_container {
+	float: left;
+}
+
+#id_content {
+	overflow: hidden;
+	margin: 0 0 0 30px;
+	padding: 10px 10px 0 33px;
+}
+
+/* Side navigation styles */
+
+.side-nav-tab li a {
+	color: #000000;
+	font-size: 24px;
+	line-height: 48px;
+	text-decoration: none;
+	padding: 10px 10px 0 33px;
+}
+
+.side-nav-tab li a.home {
+	background: #ffffff url('../lib/img/glyphicons_free/glyphicons/png/glyphicons_020_home.png') 0 50% no-repeat;
+}
+
+.side-nav-tab li a.read {
+	background: #ffffff url('../lib/img/glyphicons_free/glyphicons/png/glyphicons_071_book.png') 0 50% no-repeat;
+}
+
+.side-nav-tab li a.watch {
+	background: #ffffff url('../lib/img/glyphicons_free/glyphicons/png/glyphicons_008_film.png') 0 50% no-repeat;
+}
+
+.side-nav-tab li a.listen {
+	background: #ffffff url('../lib/img/glyphicons_free/glyphicons/png/glyphicons_017_music.png') 0 50% no-repeat;
+}
+
+.side-nav-tab li a.travel {
+	background: #ffffff url('../lib/img/glyphicons_free/glyphicons/png/glyphicons_340_globe.png') 0 50% no-repeat;
+}
+
+.side-nav-tab li a.code {
+	background: #ffffff url('../lib/img/glyphicons_free/glyphicons/png/glyphicons_422_git_branch.png') 0 50% no-repeat;
+}
+
+.side-nav-tab li a.write {
+	background: #ffffff url('../lib/img/glyphicons_free/glyphicons/png/glyphicons_110_align_left.png') 0 50% no-repeat;
+}
+
+.side-nav-tab li a:hover {
+	color: #c21313;
+	text-decoration: underline;
+}
+
+.side-nav-tab li a.selected {
+	color: #c21313;
+	font-weight: bold;
+	text-decoration: underline;	
+}
+
+/* End Side navigation styles */
+
+.portrait-pic {
+	transition-property: border-radius;
+	transition-duration: 1s;
+	transition-timing-function: linear;
+}
+.portrait-pic:hover {
+	border-radius: 50%;
+}
+
+.p-image-left {
+	float:left;
+	margin-right: 5px;
+}
+
+/* Footer Styles */
+
+#id_footer_wrapper {
+	margin: 15px 0;
+}
+
+#id_tv_video_container {
+	width: 480px;
+}
+
+div.item-container {
+	display: block;
+	margin: 15px 0;
+}
+
+div.video-slider {
+	margin: 0 15px;
+}
+
+div.video-slider .video-slide {
+	margin: 0 0 5px 0;
+	padding: 0 0 5px 0;
+	border-bottom: 1px solid #C2C2C2;
+	overflow: hidden;
+	background-color: #C2C2C2;
+}
+
+div.video-slider .video-slide:hover {
+	color: #C21313;
+	cursor: pointer;
+}
+
+div.video-slider ul li.selected {
+	color: #C21313;
+	font-weight: bold;
+	background-color: #FFFFFF;
+}
+
+div.video-slider .video-title, .video-summary {
+	padding: 5px;
+	width: 95px;
+	white-space:normal;
+	line-height: 1.2;
+}
+
+div.photo {
+	float: left;
+	position: relative;
+	background-position: center;
+	background-size: 100% 100%;
+	background-color: #77c4a5;
+	margin: 2px;
+}
+
+div.content-snippet {
+	border: 1px solid #C2C2C2;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 5px 5px 5px 0;
+	width: 520px;
+}
