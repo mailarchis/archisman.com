@@ -41,9 +41,10 @@
 			<div id="id_content">
 				<article>
 					<!-- Twitter -->
+					<h2 class="bold">Some places I write on</h2>
 					<section>
 						<div class="item-container">
-							<h2 class="bold">Twitter</h2>
+							<h3 class="bold">Twitter</h3>
 							<span class="italic">Bits of info that can be spread over 140 characters</span>
 							<a class="twitter-timeline" href="https://twitter.com/archismandas" data-widget-id="391561915542941696">Tweets by @archismandas</a>
 						</div>
@@ -52,7 +53,7 @@
 					<!-- Tumblr -->
 					<section>
 						<div class="item-container">
-							<h2 class="bold">Tumblog</h2>
+							<h3 class="bold">Tumblog</h3>
 							<span class="italic">A few thoughts on startups, products and life.</span>
 							<div class="content-snippet">
 								<h3 id="id_tumblr_post_title" class="bold strong"></h3>
@@ -66,7 +67,7 @@
 					<!-- Quora -->
 					<section>
 						<div class="item-container">
-							<h2 class="bold">Quora</h2>
+							<h3 class="bold">Quora</h3>
 							<span class="italic">Q n As</span>
 							<div class="content-snippet">
 								<strong>Latest Question Answered - &nbsp;</strong><span id="id_quora_answered_q"class="bold"></span>
@@ -103,6 +104,16 @@
 		</div>
 		<!-- End Footer -->
 		<!-- Start Javascript -->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-42070049-2', 'archisman.com');
+		  ga('send', 'pageview');
+
+		</script>
 		<script src="../lib/js/jquery-2.0.3.min.js"></script>
 		<!-- Twitter Script -->
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
@@ -132,21 +143,15 @@
 				url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(__QUORA_ANS_URL__),
 				dataType: 'json',
 				}).success( function(response) {
-					console.log("*******************");
-					console.log(response);
 					$("#id_quora_answered_q").html(response.responseData.feed.entries[0].title);
 					$("#id_quora_answered_ans").html(response.responseData.feed.entries[0].content);
-					console.log("*******************");
 			});
 			 $.ajax({
 				url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(__QUORA_Q_URL__),
 				dataType: 'json',
 				}).success( function(response) {
-					console.log("1******************");
-					console.log(response);
 					$("#id_quora_asked_q").html(response.responseData.feed.entries[0].title);
 					$("#id_quora_asked_url").attr("href", response.responseData.feed.entries[0].link);
-					console.log("1******************");
 			});
 		});
 		</script>
